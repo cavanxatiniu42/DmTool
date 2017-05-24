@@ -1,5 +1,6 @@
 package model;
 
+import com.sun.glass.ui.Robot;
 import com.sun.org.apache.regexp.internal.RE;
 import domainapp.basics.exceptions.ConstraintViolationException;
 import domainapp.basics.model.meta.DAssoc;
@@ -9,20 +10,20 @@ import domainapp.basics.util.Tuple;
 import model.Chainmail;
 
 public abstract class Armors {
-    @DAttr(name = "id", type = DAttr.Type.String, mutable = false, id = true, auto = true)
-    protected String id;
+    @DAttr(name = "id", type = DAttr.Type.String, mutable = false, id = true, auto = true, length = 15)
+    private String id;
     @DAttr(name = "name", type = DAttr.Type.String, mutable = true, optional = true, length = 10)
-    protected String name;
+    private String name;
     @DAttr(name = "strength", type = DAttr.Type.Integer, mutable = false, min = 1, max = 20)
-    protected int strength;
+    private int strength;
     @DAttr(name = "intelligent", type = DAttr.Type.Integer, mutable = false, min = 1, max = 20)
-    protected int intelligent;
+    private int intelligent;
     @DAttr(name = "dexterity", type = DAttr.Type.Integer, mutable = false, min = 1, max = 20)
-    protected int dexterity;
+    private int dexterity;
     @DAttr(name = "hero", type = DAttr.Type.Domain, length = 10, optional = true)
     @DAssoc(ascName = "hero-has-armor", role = "armor", ascType = DAssoc.AssocType.One2One, endType = DAssoc.AssocEndType.One,
             associate = @DAssoc.Associate(type = Hero.class, cardMin = 1, cardMax = 1), dependsOn = true)
-    protected Hero hero;
+    private Hero hero;
     private static int idCounter;
 
 
@@ -71,20 +72,36 @@ public abstract class Armors {
     }
 
 
-    protected static String nextId(String id) {
-        idCounter++;
-        return id + idCounter;
 
+    private String nextID(String currId) {
+        if (currId == null) {
+            idCounter++;
+            if (this instanceof Chainmail) {
+                return Chainmail.class.getSimpleName() + idCounter;
+            } else if (this instanceof Robe) {
+                return Robe.class.getSimpleName() + idCounter;
+            } else if (this instanceof Leather) {
+                return Leather.class.getSimpleName() + idCounter;
+            }
+        } else {
+            int num = 0;
+            if (this instanceof Chainmail) {
+                num = Integer.parseInt(currId.substring(9));
+            } else if (this instanceof Robe) {
+                num = Integer.parseInt(currId.substring(4));
+            } else if (this instanceof Leather) {
+                num = Integer.parseInt(currId.substring(7));
+            }
+            if (num > idCounter) {
+                idCounter = num;
+            }
+
+        }
+        return currId;
     }
 
     public Armors(String id, String name, Integer strength, Integer intelligent, Integer dexterity, Hero hero) {
-        if (this instanceof Chainmail) {
-            this.id = Chainmail.class.getSimpleName() + nextId(id);
-        } else if (this instanceof Robe){
-            this.id = Robe.class.getSimpleName()+nextId(id);
-        } else if (this instanceof Leather){
-            this.id = Leather.class.getSimpleName()+nextId(id);
-        }
+       this.id = nextID(id);
         this.name = name;
         this.strength = strength;
         this.intelligent = intelligent;
@@ -94,11 +111,11 @@ public abstract class Armors {
     }
 
     public Armors(String name, Integer strength, Integer intelligent, Integer bonusDexterity, Hero hero) {
-        this("", name, 10, 10, 10, null);
+        this(null, name, 10, 10, 10, null);
     }
 
     public Armors(String name, Report report) {
-        this("", name, 10, 10, 10, null);
+        this(null, name, 10, 10, 10, null);
     }
 
     public String getId() {

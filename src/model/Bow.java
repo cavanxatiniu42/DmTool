@@ -15,11 +15,11 @@ public class Bow extends Weapons {
     }
 
     public Bow(String name, Integer strength, Integer dexterity, Integer intelligent,Hero hero, Integer bonusDexterity) {
-        this("", name, 10,10,10, null,  2);
+        this(null, name, 10,10,10, null,  2);
     }
 
     public Bow(String name, Integer bonusDexterity) {
-        this("", name, 10,10,10, null, 2);
+        this(null, name, 10,10,10, null, 2);
     }
 
     public Integer getBonusDexterity() {

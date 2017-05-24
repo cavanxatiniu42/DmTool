@@ -15,12 +15,12 @@ public class Axe extends Weapons {
     }
 
     public Axe(String name, Integer strength, Integer dexterity, Integer intelligent, Hero hero, Integer bonusStrengtht) {
-        this("",name,10,10,10, null, 2);
+        this(null,name,10,10,10, null, 2);
 
     }
 
     public Axe(String name, Integer bonusStrength) {
-        this("",name,10,10,10,null, 2);
+        this(null,name,10,10,10,null, 2);
 
     }
 

@@ -7,37 +7,37 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/derby.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/derby.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/domainapptool.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/domainapptool.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/memorybasedjavacompiler.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/memorybasedjavacompiler.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
+    <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/scrollabledesktop.jar!/" />
+          <root url="jar://$MODULE_DIR$/../lib/scrollabledesktop.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

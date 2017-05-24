@@ -14,11 +14,11 @@ public class Robe extends Armors {
     }
 
     public Robe(String name, Integer strength, Integer intelligent, Integer dexterity, Hero hero, Integer bonusIntelligent) {
-        this("", name, 10,10,10,null, 2);
+        this(null, name, 10,10,10,null, 2);
     }
 
     public Robe(String name, Integer bonusIntelligent) {
-        this("", name, 10,10,10,null, 2);
+        this(null, name, 10,10,10,null, 2);
     }
 
     public Integer getBonusIntelligent() {

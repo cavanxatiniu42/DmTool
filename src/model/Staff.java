@@ -14,11 +14,11 @@ public class Staff extends Weapons {
     }
 
     public Staff(String name, Integer strength, Integer dexterity, Integer intelligent,Hero hero,  Integer bonusIntelligent) {
-        this("", name, 10,10,10,null, 2);
+        this(null, name, 10,10,10,null, 2);
     }
 
     public Staff(String name, Integer bonusIntelligent) {
-        this("", name, 10,10,10,null, 2);
+        this(null, name, 10,10,10,null, 2);
     }
 
     public Integer getBonusIntelligent() {

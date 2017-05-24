@@ -8,20 +8,20 @@ import domainapp.basics.model.meta.DOpt;
 import domainapp.basics.util.Tuple;
 
 public abstract class Weapons {
-    @DAttr(name = "id", type = DAttr.Type.String, mutable = false, id = true, auto = true)
-    protected String id;
+    @DAttr(name = "id", type = DAttr.Type.String, mutable = false, id = true, auto = true, length = 15)
+    private String id;
     @DAttr(name = "name", type = DAttr.Type.String, mutable = true, length = 10)
-    protected String name;
+    private String name;
     @DAttr(name = "strength", type = DAttr.Type.Integer, mutable = false, min = 1, max = 20)
-    protected Integer strength;
+    private Integer strength;
     @DAttr(name = "dexterity", type = DAttr.Type.Integer, mutable = false, min = 1, max = 20)
-    protected Integer dexterity;
+    private Integer dexterity;
     @DAttr(name = "intelligent", type = DAttr.Type.Integer, mutable = false, min = 1, max = 20)
-    protected Integer intelligent;
+    private Integer intelligent;
     @DAttr(name = "hero", type = DAttr.Type.Domain, length = 10, optional = true)
     @DAssoc(ascName = "hero-has-weapon", role = "weapon", ascType = DAssoc.AssocType.One2One, endType = DAssoc.AssocEndType.One,
             associate = @DAssoc.Associate(type = Hero.class, cardMin = 1, cardMax = 1), dependsOn = true)
-    protected Hero hero;
+    private Hero hero;
     private static int idCounter;
 
     @DOpt(type = DOpt.Type.AutoAttributeValueSynchroniser)
@@ -39,21 +39,36 @@ public abstract class Weapons {
         }
     }
 
-    protected static String nextId(String id) {
 
-        idCounter++;
-        return id + idCounter;
+    private String nextID(String currId) {
+        if (currId == null) {
+            idCounter++;
+            if (this instanceof Axe) {
+                return Axe.class.getSimpleName() + idCounter;
+            } else if (this instanceof Bow) {
+                return Bow.class.getSimpleName() +  idCounter;
+            } else if (this instanceof Staff) {
+                return Staff.class.getSimpleName() + idCounter;
+            }
+        } else {
+            int num = 0;
+            if (this instanceof Axe) {
+                num = Integer.parseInt(currId.substring(3));
+            } else if (this instanceof Bow) {
+                num = Integer.parseInt(currId.substring(3));
+            } else if (this instanceof Staff) {
+                num = Integer.parseInt(currId.substring(5));
+            }
+            if (num > idCounter) {
+                idCounter = num;
+            }
 
+        }
+        return currId;
     }
 
     public Weapons(String id, String name, Integer strength, Integer dexterity, Integer intelligent, Hero hero) {
-        if (this instanceof Axe) {
-            this.id = Axe.class.getSimpleName() + nextId(id);
-        } else if (this instanceof Bow){
-            this.id = Bow.class.getSimpleName()+nextId(id);
-        } else if (this instanceof Staff){
-            this.id = Staff.class.getSimpleName()+nextId(id);
-        }
+        this.id = nextID(id);
         this.name = name;
         this.strength = strength;
         this.dexterity = dexterity;
@@ -62,11 +77,11 @@ public abstract class Weapons {
     }
 
     public Weapons(String name, Integer strength, Integer dexterity, Integer intelligent, Hero hero) {
-        this("", name, 10, 10, 10, null);
+        this(null, name, 10, 10, 10, null);
     }
 
     public Weapons(String name) {
-        this("", name, 10, 10, 10, null);
+        this(null, name, 10, 10, 10, null);
     }
 
     public Hero getHero() {

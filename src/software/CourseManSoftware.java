@@ -31,8 +31,7 @@ public class CourseManSoftware {
           Robe.class,
           Rogue.class,
           Staff.class,
-          Report.class,
-          ReportFilter.class
+          Report.class
 
   };
   

@@ -14,11 +14,11 @@ public class Leather extends Armors{
     }
 
     public Leather(String name, Integer strength, Integer intelligent,Integer dexterity,Hero hero, Integer bonusDexterity) {
-        this("", name, 10,10,10, null,2);
+        this(null, name, 10,10,10, null,2);
     }
 
     public Leather(String name, Integer bonusDexterity) {
-        this("", name, 10,10,10,null, 2);
+        this(null, name, 10,10,10,null, 2);
     }
 
     public Integer getBonusDexterity() {

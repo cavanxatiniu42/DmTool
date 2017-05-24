@@ -16,13 +16,13 @@ public class Chainmail extends Armors {
     }
 
     public Chainmail(String name, Integer strength, Integer intelligent, Integer dexterity, Hero hero, Integer bonusStrength) {
-        this("",name,10,10,10,null,2);
+        this(null,name,10,10,10,null,2);
 
     }
 
 
     public Chainmail(String name, Integer bonusStrength) {
-        this("",name,10,10,10, null,2);
+        this(null,name,10,10,10, null,2);
 
     }
 

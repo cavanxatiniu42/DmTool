@@ -4,10 +4,10 @@ package model;
  * Created by Asus on 4/24/2017.
  */
 public class Rogue extends Hero {
-    protected Rogue(String id, String name, Integer level, Integer attack, Integer defense, Integer hp, Integer strength,
+    public Rogue(String id, String name, Integer level, Integer attack, Integer defense, Integer hp, Integer strength,
                     Integer dexterity, Integer intelligent, Weapons weapons, Armors armors, Report report) {
         super(id, name, level, attack, defense, hp, strength, dexterity, intelligent, weapons, armors, report);
-        update(weapons,armors);
+//        update(weapons,armors);
     }
 
     public Rogue(String name, Integer level, Integer attack, Integer defense, Integer hp, Integer strength, Integer dexterity,
@@ -18,7 +18,7 @@ public class Rogue extends Hero {
 
     public Rogue(String name, Weapons weapons, Armors armors, Report report) {
         super(name, weapons, armors, report);
-        update(weapons,armors);
+//        update(weapons,armors);
     }
 
 
@@ -27,13 +27,13 @@ public class Rogue extends Hero {
         super.update(weapons, armors);
         if (weapons instanceof Bow){
             Bow bow = (Bow) weapons;
-            dexterity += bow.getBonusDexterity();
+            this.setDexterity( getDexterity() + bow.getBonusDexterity());
         }
         if (armors instanceof Leather){
             Leather leather = (Leather) armors;
-            strength += leather.getBonusDexterity();
+            setDexterity(getDexterity() + leather.getBonusDexterity());
         }
-        this.attack += this.getDexterity()+ weapons.getDexterity();
-        this.defense +=this.getDexterity()+armors.getDexterity();
+        this.setAttack( this.getAttack() + (this.getDexterity() + weapons.getDexterity()));
+        this.setDefense(this.getDefense() + (this.getDexterity() + armors.getDexterity()));
     }
 }

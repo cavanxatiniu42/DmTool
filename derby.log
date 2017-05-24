@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Thu May 11 16:07:42 ICT 2017:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.3.0 - (1405108): instance a816c00e-015b-f6c3-8c32-0000034db878 
-on database directory C:\Users\Asus\Documents\GameManagement\data\DomainAppTool  with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
-Loaded from file:/C:/Users/Asus/Desktop/derby.jar
+Wed May 24 07:25:30 ICT 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.8.3.0 - (1405108): instance a816c00e-015c-37d8-1fc9-00000353fb08 
+on database directory C:\Users\Asus\Desktop\GameManagement\data\DomainAppTool  with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Loaded from file:/C:/Users/Asus/Desktop/lib/derby.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_131-b11
-user.dir=C:\Users\Asus\Documents\GameManagement
+user.dir=C:\Users\Asus\Desktop\GameManagement
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0
